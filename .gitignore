@@ -1,0 +1,14 @@
+# Ignore large files and archives
+*.zip
+*.tar.gz
+*.tlog
+*.tlog-journal
+
+# Ignore python caches
+__pycache__/
+*.pyc
+
+# Ignore ROS 2 build directories
+build/
+install/
+log/
