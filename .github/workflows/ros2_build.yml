@@ -19,13 +19,14 @@ jobs:
         with:
           required-ros-distributions: iron
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          rosdep update
-          rosdep install --from-paths src --ignore-src -y --rosdistro iron
-
-      - name: Build ROS 2 workspace
-        run: |
-          source /opt/ros/iron/setup.bash
-          colcon build --symlink-install --event-handlers console_direct+
+      - name: Build and Test ROS 2 workspace
+        uses: ros-tooling/action-ros-ci@v0.3
+        with:
+          target-ros2-distro: iron
+          vcs-repo-file-url: ""
+          colcon-defaults: |
+            {
+              "build": {
+                "symlink-install": true
+              }
+            }
